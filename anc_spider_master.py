@@ -26,15 +26,15 @@ class AncSpiderSpider(scrapy.Spider):
         self.final_data = []
         self.json_file = {
             "type": "service_account",
-            "project_id": "silken-facet-398906",
-            "private_key_id": "--",
-            "private_key": "--",
-            "client_email": "--",
-            "client_id": "--",
-            "auth_uri": "--",
-            "token_uri": "--",
-            "auth_provider_x509_cert_url": "--",
-            "client_x509_cert_url": "--",
+            "project_id": "<redacted>",
+            "private_key_id": "<redacted>",
+            "private_key": "<redacted>",
+            "client_email": "<redacted>",
+            "client_id": "<redacted>",
+            "auth_uri": "<redacted>",
+            "token_uri": "<redacted>",
+            "auth_provider_x509_cert_url": "<redacted>",
+            "client_x509_cert_url": "<redacted>",
             "universe_domain": "googleapis.com"
         }
         self.sheet_data = self.get_sheet()
@@ -73,7 +73,7 @@ class AncSpiderSpider(scrapy.Spider):
         scopes = ['https://www.googleapis.com/auth/spreadsheets']
         credentials = Credentials.from_service_account_info(self.json_file, scopes=scopes)
         gc = gspread.authorize(credentials)
-        sheet = gc.open_by_key("1BXwbT5CzpACGA8CGR9uyF9ZojbB6_mne_ZZWcFdd-Co")
+        sheet = gc.open_by_key("<redacted>")
         worksheet = sheet.worksheet('LIVE DATA')
         data = worksheet.get_all_records()
         return data
@@ -95,7 +95,7 @@ class AncSpiderSpider(scrapy.Spider):
         scopes = ['https://www.googleapis.com/auth/spreadsheets']
         credentials = Credentials.from_service_account_info(self.json_file, scopes=scopes)
         gc = gspread.authorize(credentials)
-        sheet = gc.open_by_key("1BXwbT5CzpACGA8CGR9uyF9ZojbB6_mne_ZZWcFdd-Co")
+        sheet = gc.open_by_key("<redacted>")
         sheet_list = [list(self.final_data[0].keys())]
         for row_data in self.final_data:
             sheet_list.append(list([row_data.get(key, '') for key in sheet_list[0]]))
